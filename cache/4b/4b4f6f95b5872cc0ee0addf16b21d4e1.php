@@ -24,50 +24,59 @@ class __TwigTemplate_2d918853ece248b4af37d8cc6b60f1b4 extends Template
 
         $this->source = $this->getSourceContext();
 
-        $this->parent = false;
-
         $this->blocks = [
+            'title' => [$this, 'block_title'],
+            'body' => [$this, 'block_body'],
         ];
+    }
+
+    protected function doGetParent(array $context)
+    {
+        // line 1
+        return "base.html";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
     {
         $macros = $this->macros;
-        // line 1
-        echo "<!DOCTYPE html>
-<html lang=\"en\">
-  <head>
-    <meta charset=\"UTF-8\" />
-    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
-    <title>Twig Home</title>
-  </head>
-  <body>
-    <h1>Welcome to Twig</h1>
-    <p>Hello from a Twig template, ";
-        // line 11
+        $this->parent = $this->loadTemplate("base.html", "Home/index.html", 1);
+        $this->parent->display($context, array_merge($this->blocks, $blocks));
+    }
+
+    public function block_title($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        echo " Home ";
+    }
+
+    public function block_body($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        // line 2
+        echo "<h1>Welcome to Twig</h1>
+<p>Hello from a Twig template, ";
+        // line 3
         echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
         echo "</p>
 
-    <ul>
-      ";
-        // line 14
+<ul>
+  ";
+        // line 6
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["colours"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["colour"]) {
-            // line 15
-            echo "      <li>";
+            // line 7
+            echo "  <li>";
             echo twig_escape_filter($this->env, $context["colour"], "html", null, true);
             echo "</li>
-      ";
+  ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['colour'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 17
-        echo "    </ul>
-  </body>
-</html>
+        // line 9
+        echo "</ul>
+
 ";
     }
 
@@ -83,7 +92,7 @@ class __TwigTemplate_2d918853ece248b4af37d8cc6b60f1b4 extends Template
 
     public function getDebugInfo()
     {
-        return array (  68 => 17,  59 => 15,  55 => 14,  49 => 11,  37 => 1,);
+        return array (  78 => 9,  69 => 7,  65 => 6,  59 => 3,  56 => 2,  36 => 1,);
     }
 
     public function getSourceContext()

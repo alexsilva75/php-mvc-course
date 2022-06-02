@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use \Core\View;
+use App\Models\Post;
 
 
 class Posts extends \Core\Controller{
@@ -10,7 +11,10 @@ class Posts extends \Core\Controller{
         // echo 'Hello from the index action in the <strong>Posts</strong> controller!';
         // echo '<p>Query string parameters: <pre>'.
         //     htmlspecialchars(print_r($_GET, true)).'</pre></p>';
-        View::renderTemplate('Posts/index.html');
+        $posts  = Post::getAll();
+        View::renderTemplate('Posts/index.html', [
+            'posts' => $posts
+        ]);
     }
 
     public function addNewAction(){

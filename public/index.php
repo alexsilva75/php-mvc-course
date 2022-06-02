@@ -2,13 +2,16 @@
     require_once '../vendor/autoload.php';
 
     
-    spl_autoload_register(function($class){
-        $root = dirname(__DIR__);
-        $file = $root.'/'.str_replace('\\', '/', $class).'.php';
-        if(is_readable($file)){
-            require $root.'/'.str_replace('\\', '/', $class).'.php';
-        }
-    });
+    // spl_autoload_register(function($class){
+    //     $root = dirname(__DIR__);
+    //     $file = $root.'/'.str_replace('\\', '/', $class).'.php';
+    //     if(is_readable($file)){
+    //         require $root.'/'.str_replace('\\', '/', $class).'.php';
+    //     }
+    // });
+
+
+
     // require '../App/Controllers/Posts.php';
     // require('../Core/Router.php');
     // if(array_key_exists('QUERY_STRING', $_SERVER)){

@@ -1,4 +1,4 @@
-{% extends "base.html" %} Home {% block title %} {% endblock %}
+{% extends "base.html" %} {% block title %} Home {% endblock %} {% block body %}
 <h1>Welcome to Twig</h1>
 <p>Hello from a Twig template, {{ name }}</p>
 
@@ -7,3 +7,5 @@
   <li>{{ colour }}</li>
   {% endfor %}
 </ul>
+
+{% endblock %}
